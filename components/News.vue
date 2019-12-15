@@ -54,17 +54,13 @@ export default {
         // return data that should be available
         // in the template
         const items = posts.items
-        console.log(items[0])
         let postsrc
         let newsposts
-        console.log('hej hej')
 
         for (let i = 0; i < items.length; i++) {
-          console.log(items[i].fields)
           newsposts = items[i].fields
           if (items) {
             postsrc[i] = newsposts
-            console.log(postsrc[i])
           }
         }
 
@@ -81,7 +77,6 @@ export default {
       this.img.loaded = true
     },
     language(data) {
-      console.log('hello you clicked data: ' + data)
       return data
     }
   }

@@ -3,7 +3,6 @@
     <v-layout column justify-center align-center>
       <v-flex>
         <div>
-
           <v-row>
             <v-col
               v-for="(card, i) in cards"
@@ -24,15 +23,13 @@
                 <v-card-title
                   class="text-center justify-center"
                   color="rgb(0, 0, 0, 0)"
-                  ><p class="teal--text cardtitle">{{ card.title }}</p></v-card-title
+                  ><p class="teal--text cardtitle">
+                    {{ card.title }}
+                  </p></v-card-title
                 >
                 <v-card-text class="">
                   <v-responsive>
-                    <img
-                      class="cards pa-0"
-                      :src="card.src"
-                      :alt="card.alt"
-                    />
+                    <img class="cards pa-0" :src="card.src" :alt="card.alt" />
                   </v-responsive>
                   <p>
                     {{ card.text }}
@@ -62,19 +59,22 @@ export default {
         {
           src: require('../assets/img/img_entrepenad2.png'),
           title: 'Markarbeten',
-          text: 'Vi utför alla möjliga sorters markarbeten så som grävning och köra dumper… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          text:
+            'Vi utför alla möjliga sorters markarbeten så som grävning och köra dumper… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           alt: 'Markarbeten'
         },
         {
           src: require('../assets/img/img_entrepenad3.png'),
           title: 'Tomtplanering',
-          text: 'Behöver du hjälp med markanläggning och planera tomter… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
+          text:
+            'Behöver du hjälp med markanläggning och planera tomter… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
           alt: 'Tomtplanering'
         },
         {
           src: require('../assets/img/img_entrepenad4.png'),
           title: 'Jordförsäljning',
-          text: 'Planteringstid? Vi säljer prima sorterad jord av alla möjliga varianter… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          text:
+            'Planteringstid? Vi säljer prima sorterad jord av alla möjliga varianter… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           alt: 'Jordförsäljning'
         }
       ]

@@ -3,7 +3,6 @@
     <v-layout column justify-center align-center>
       <v-flex>
         <div>
-
           <v-row>
             <v-col
               v-for="(card, i) in cards"
@@ -24,15 +23,13 @@
                 <v-card-title
                   class="text-center justify-center"
                   color="rgb(0, 0, 0, 0)"
-                  ><p class="teal--text cardtitle">{{ card.title }}</p></v-card-title
+                  ><p class="teal--text cardtitle">
+                    {{ card.title }}
+                  </p></v-card-title
                 >
                 <v-card-text class="">
                   <v-responsive>
-                    <img
-                      class="cards pa-0"
-                      :src="card.src"
-                      :alt="card.alt"
-                    />
+                    <img class="cards pa-0" :src="card.src" :alt="card.alt" />
                   </v-responsive>
                   <p>
                     {{ card.text }}
@@ -62,19 +59,22 @@ export default {
         {
           src: require('../assets/img/img_uthyrning2.jpg'),
           title: 'Garage',
-          text: 'Vi hyr även ut garage… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
+          text:
+            'Vi hyr även ut garage… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
           alt: 'Garage'
         },
         {
           src: require('../assets/img/img_uthyrning3.jpg'),
           title: 'Vinterförvaring',
-          text: 'Ställplatser för husvagn, husbil och båt… sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
+          text:
+            'Ställplatser för husvagn, husbil och båt… sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
           alt: 'Vinterförvaring'
         },
         {
           src: require('../assets/img/img_uthyrning4.jpg'),
           title: 'Verkstadslokaler',
-          text: 'Vi kan hjälpa dig med både större och mindre verkstadslokaler..Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
+          text:
+            'Vi kan hjälpa dig med både större och mindre verkstadslokaler..Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
           alt: 'Verkstadslokaler'
         }
       ]

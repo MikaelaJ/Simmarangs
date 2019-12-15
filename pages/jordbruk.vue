@@ -3,7 +3,6 @@
     <v-layout column justify-center align-center>
       <v-flex>
         <div>
-
           <v-row>
             <v-col
               v-for="(card, i) in cards"
@@ -24,15 +23,13 @@
                 <v-card-title
                   class="text-center justify-center"
                   color="rgb(0, 0, 0, 0)"
-                  ><p class="brown--text cardtitle">{{ card.title }}</p></v-card-title
+                  ><p class="brown--text cardtitle">
+                    {{ card.title }}
+                  </p></v-card-title
                 >
                 <v-card-text class="">
                   <v-responsive>
-                    <img
-                      class="cards pa-0"
-                      :src="card.src"
-                      :alt="card.alt"
-                    />
+                    <img class="cards pa-0" :src="card.src" :alt="card.alt" />
                   </v-responsive>
                   <p>
                     {{ card.text }}
@@ -62,19 +59,22 @@ export default {
         {
           src: require('../assets/img/img_jordbruk2.jpg'),
           title: 'Pressa foder',
-          text: 'Vi kan hjälpa till att pressa både ensilage, halm och hö… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          text:
+            'Vi kan hjälpa till att pressa både ensilage, halm och hö… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
           alt: 'Pressa foder'
         },
         {
           src: require('../assets/img/img_jordbruk3.jpg'),
           title: 'Fastgödselspridare',
-          text: 'Vi erbjuder också… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
+          text:
+            'Vi erbjuder också… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
           alt: 'Fastgödselspridare'
         },
         {
           src: require('../assets/img/img_jordbruk4.jpg'),
           title: 'Slå gräs',
-          text: 'Vi har all utrustning till att slå olika sorters gräs….Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
+          text:
+            'Vi har all utrustning till att slå olika sorters gräs….Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
           alt: 'Slå gräs'
         }
       ]

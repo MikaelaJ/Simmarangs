@@ -6,7 +6,11 @@
           <v-toolbar-title>
             <v-responsive>
               <nuxt-link to="/">
-                <v-img width="40px" :src="require('../assets/img/logo.png')" alt="logo"></v-img>
+                <v-img
+                  width="40px"
+                  :src="require('../assets/img/logo.png')"
+                  alt="logo"
+                ></v-img>
               </nuxt-link>
             </v-responsive>
           </v-toolbar-title>

@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Header />
-      <nuxt />
+    <nuxt />
     <Footer />
   </v-app>
 </template>
@@ -16,9 +16,7 @@ export default {
     Header
   },
   data() {
-    return {
-      
-    }
+    return {}
   }
 }
 </script>

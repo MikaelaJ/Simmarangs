@@ -7,7 +7,6 @@
             <v-col md="12">
               <h2 class="text-center py-10 brown--text">Vi som jobbar här</h2>
             </v-col>
-
           </v-row>
           <v-row>
             <v-col
@@ -22,7 +21,11 @@
               md="4"
             >
               <v-avatar size="200" class="pb-10">
-                <v-img alt="bild" :src="kontakt.fields.profile.fields.file.url" height="200px"></v-img>
+                <v-img
+                  alt="bild"
+                  :src="kontakt.fields.profile.fields.file.url"
+                  height="200px"
+                ></v-img>
               </v-avatar>
               <h3>{{ kontakt.fields.title }}</h3>
               <p>{{ kontakt.fields.text }}</p>
@@ -36,16 +39,16 @@
           </v-row>
           <v-row>
             <v-col
-            v-for="(location, i) in locations"
-            :key="`${i}-${location.fields.name}`"
-            xs="12"
-            sm="12"
-            md="12"
-            lg="12"
-            xl="12"
-            hover
-          >
-           <v-responsive>
+              v-for="(location, i) in locations"
+              :key="`${i}-${location.fields.name}`"
+              xs="12"
+              sm="12"
+              md="12"
+              lg="12"
+              xl="12"
+              hover
+            >
+              <v-responsive>
                 <iframe
                   v-if="location.fields.karta"
                   class="iframe-container"
@@ -55,9 +58,9 @@
                   frameborder="0"
                   style="border:0;"
                   allowfullscreen
-                ></iframe></v-responsive>
-
-          </v-col>
+                ></iframe
+              ></v-responsive>
+            </v-col>
           </v-row>
         </div>
       </v-flex>
@@ -74,17 +77,15 @@ export default {
   },
   computed: {
     kontakts() {
-      console.log(this.$store.state.kontakts.kontakts[0].fields.profile.fields.file.url)
       return this.$store.state.kontakts.kontakts
     },
     locations() {
-      console.log(this.$store.state.locations.locations[0].fields.karta)
       return this.$store.state.locations.locations
     }
   },
   async fetch({ store, params }, data) {
-    await store.dispatch('kontakts/getKontakts', 'hej')
-    await store.dispatch('locations/getLocations', 'hej')
+    await store.dispatch('kontakts/getKontakts', params.slug)
+    await store.dispatch('locations/getLocations', params.slug)
   },
 
   // `env` is available in the context object

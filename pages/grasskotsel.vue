@@ -3,7 +3,6 @@
     <v-layout column justify-center align-center>
       <v-flex>
         <div>
-
           <v-row>
             <v-col
               v-for="(card, i) in cards"
@@ -12,7 +11,8 @@
               reverse-transition="fade-transition"
               transition="fade-transition"
               class="text-center pa-10"
-              md="6" offset-md="3"
+              md="6"
+              offset-md="3"
             >
               <v-card
                 elevation="0"
@@ -24,15 +24,13 @@
                 <v-card-title
                   class="text-center justify-center"
                   color="rgb(0, 0, 0, 0)"
-                  ><p class="green--text cardtitle">{{ card.title }}</p></v-card-title
+                  ><p class="green--text cardtitle">
+                    {{ card.title }}
+                  </p></v-card-title
                 >
                 <v-card-text class="">
                   <v-responsive>
-                    <img
-                      class="cards pa-0"
-                      :src="card.src"
-                      :alt="card.alt"
-                    />
+                    <img class="cards pa-0" :src="card.src" :alt="card.alt" />
                   </v-responsive>
                   <p>
                     {{ card.text }}
