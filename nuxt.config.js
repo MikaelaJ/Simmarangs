@@ -2,6 +2,10 @@ import config from './.contentful.json'
 /* const config = require('./.contentful.json') */
 
 export default {
+  generate: {
+    fallback: true
+  }, 
+
   mode: 'universal',
   /*
    ** Headers of the page
@@ -76,6 +80,10 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
   }
 }
