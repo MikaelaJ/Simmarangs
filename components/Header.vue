@@ -52,7 +52,7 @@
     </nuxt-link>-->
 
     <!-- drop down -->
-    <v-menu offset-y>
+   <!--  <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <v-btn right cols="1" class="hidden-md-and-up" text v-on="on">
           Dropdown
@@ -69,7 +69,7 @@
           <v-list-item-title>{{ subLink.text }}</v-list-item-title>
         </nuxt-link>
       </v-list>
-    </v-menu>
+    </v-menu> -->
   </v-app-bar>
 </template>
 
