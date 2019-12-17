@@ -22,8 +22,8 @@
             >
               <v-avatar size="200" class="pb-10">
                 <v-img
-                  alt="bild"
                   :src="kontakt.fields.profile.fields.file.url"
+                  alt="bild"
                   height="200px"
                 ></v-img>
               </v-avatar>
@@ -51,8 +51,8 @@
               <v-responsive>
                 <iframe
                   v-if="location.fields.karta"
-                  class="iframe-container"
                   :src="getLocation(location.fields.karta)"
+                  class="iframe-container"
                   width="100%"
                   height="300"
                   frameborder="0"

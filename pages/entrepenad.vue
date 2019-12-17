@@ -29,7 +29,7 @@
                 >
                 <v-card-text>
                   <v-responsive>
-                    <img class="cards pa-0" :src="card.src" :alt="card.alt" />
+                    <img :src="card.src" :alt="card.alt" class="cards pa-0" />
                   </v-responsive>
                   <p>
                     {{ card.text }}

@@ -1,8 +1,8 @@
 <template>
   <v-layout column align-center>
     <v-img
-      class="index-img"
       :src="require('../assets/img/frontimg.jpg')"
+      class="index-img"
     ></v-img>
     <v-container>
       <v-row>
@@ -20,9 +20,7 @@
             <v-card-title class="blue--text">
               {{ post.fields.title }}
               <v-card-text class="pl-0">
-                <vue-markdown class="black--text">{{
-                  post.fields.text
-                }}</vue-markdown>
+                <vue-markdown class="black--text">{{ post.fields.text }}</vue-markdown>
                 <br />
                 <p class="text-right">{{ post.sys.createdAt }}</p>
               </v-card-text>

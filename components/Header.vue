@@ -7,9 +7,9 @@
             <v-responsive>
               <nuxt-link to="/">
                 <v-img
-                  width="40px"
                   :src="require('../assets/img/logo.png')"
                   alt="logo"
+                  width="40px"
                 ></v-img>
               </nuxt-link>
             </v-responsive>
@@ -21,9 +21,9 @@
             v-for="link in links"
             :key="link.text"
             v-model="links"
-            justify="right"
-            router
             :to="link.route"
+            router
+            justify="right"
           >
             <a right text class="mr-10 blue--text">{{ link.text }}</a>
             <!-- <v-icon v-text="link.icon" right></v-icon> -->

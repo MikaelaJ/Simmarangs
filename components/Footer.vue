@@ -4,10 +4,10 @@
       <v-btn
         v-for="link in links"
         :key="link.text"
+        :to="link.route"
         color="white"
         text
         router
-        :to="link.route"
         rounded
         class="my-2"
         >{{ link.text }}</v-btn
@@ -16,9 +16,9 @@
         <nuxt-link
           v-for="icon in icons"
           :key="icon.icon"
+          :to="icon.route"
           text
           router
-          :to="icon.route"
           class="my-2 pa-3"
           ><v-icon class="white--text" right>{{ icon.icon }}</v-icon></nuxt-link
         >

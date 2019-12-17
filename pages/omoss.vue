@@ -1,6 +1,6 @@
 <template>
   <v-layout column align-center>
-    <v-img class="index-img" :src="require('../assets/img/jarbo.jpg')"></v-img>
+    <v-img :src="require('../assets/img/jarbo.jpg')" class="index-img"></v-img>
     <v-container>
       <v-row>
         <h1 class="blue--text ml-8 my-8">Historik</h1>
@@ -17,9 +17,7 @@
             <v-card-title class="blue--text">
               {{ history.fields.title }}
               <v-card-text class="pl-0">
-                <vue-markdown class="black--text">{{
-                  history.fields.text
-                }}</vue-markdown>
+                <vue-markdown class="black--text">{{ history.fields.text }}</vue-markdown>
                 <br />
                 <p class="text-right">{{ history.sys.createdAt }}</p>
               </v-card-text>
