@@ -27,7 +27,7 @@
                     {{ card.title }}
                   </p></v-card-title
                 >
-                <v-card-text class="">
+                <v-card-text>
                   <v-responsive>
                     <img class="cards pa-0" :src="card.src" :alt="card.alt" />
                   </v-responsive>
