@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app>
+  <v-app-bar>
     <v-container>
       <v-row>
         <div md="2">

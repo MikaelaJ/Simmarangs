@@ -1,6 +1,6 @@
 <template>
   <v-app app>
-    <!-- <Header /> -->
+    <Header />
     <nuxt />
     <Footer />
   </v-app>
@@ -8,12 +8,12 @@
 
 <script>
 import Footer from '../components/Footer'
-/* import Header from '../components/Header' */
+import Header from '../components/Header'
 
 export default {
   components: {
-    Footer /* ,
-    Header */
+    Footer,
+    Header
   },
   data() {
     return {}
