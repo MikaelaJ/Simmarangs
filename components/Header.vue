@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar>
+  <v-app-bar app>
     <v-container>
       <v-row>
         <div md="2">
@@ -52,7 +52,7 @@
     </nuxt-link>-->
 
     <!-- drop down -->
-   <!--  <v-menu offset-y>
+    <!--  <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <v-btn right cols="1" class="hidden-md-and-up" text v-on="on">
           Dropdown

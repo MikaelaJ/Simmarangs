@@ -22,8 +22,10 @@
           class="my-2 pa-3"
           ><v-icon class="white--text" right>{{ icon.icon }}</v-icon></nuxt-link
         >
-        <!-- {{ new Date().getFullYear() }} —
-        <strong>Vuetify</strong> -->
+        <v-row justify="center" class="blue--text pt-10">
+          {{ new Date().getFullYear() }} —
+          <strong>Simmarängs AB</strong>
+        </v-row>
       </v-col>
     </v-row>
   </v-footer>

@@ -4,7 +4,7 @@ import config from './.contentful.json'
 export default {
   generate: {
     fallback: true
-  }, 
+  },
 
   mode: 'universal',
   /*

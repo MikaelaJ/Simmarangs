@@ -15,7 +15,10 @@
   "dependencies": {
     "contentful": "^7.10.0",
     "nuxt": "^2.0.0",
-    "vue-markdown": "^2.2.4"
+    "vue": "^2.6.11",
+    "vue-cli": "^2.9.6",
+    "vue-markdown": "^2.2.4",
+    "vue-server-renderer": "^2.6.11"
   },
   "devDependencies": {
     "@mdi/font": "^4.5.95",
@@ -28,6 +31,8 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "vue-loader": "^15.8.3",
+    "vue-template-compiler": "^2.6.11"
   }
 }
