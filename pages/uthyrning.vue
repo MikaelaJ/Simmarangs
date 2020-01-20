@@ -3,39 +3,37 @@
     <v-layout column justify-center align-center>
       <v-flex>
         <div>
+
           <v-row>
             <v-col
-              v-for="(card, i) in cards"
+              v-for="(uthyrning, i) in uthyrnings"
               :key="i"
-              :src="card.src"
               reverse-transition="fade-transition"
               transition="fade-transition"
-              class="text-center pa-10"
-              cols="6"
-            >
+              class="pa-10"
+              cols="6">
+
               <v-card
                 elevation="0"
                 color="rgb(0, 0, 0, 0)"
                 tile
                 flat
-                class="text-center"
               >
                 <v-card-title
                   class="text-center justify-center"
                   color="rgb(0, 0, 0, 0)"
-                  ><p class="teal--text cardtitle">
-                    {{ card.title }}
+                  ><p class="brown--text cardtitle">
+                    {{ uthyrning.fields.title }}
                   </p></v-card-title
                 >
-                <v-card-text class="">
+                <v-card-text>
                   <v-responsive>
-                    <img :src="card.src" :alt="card.alt" class="cards pa-0" />
+                    <img :src="uthyrning.fields.image.fields.file.url" :alt="uthyrning.fields.alt" class="cards pa-0" />
                   </v-responsive>
-                  <p>
-                    {{ card.text }}
-                  </p>
+                  <vue-markdown class="pt-3">{{ uthyrning.fields.text }}</vue-markdown>
                 </v-card-text>
               </v-card>
+
             </v-col>
           </v-row>
         </div>
@@ -45,40 +43,30 @@
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 export default {
-  data() {
+components: {
+    VueMarkdown
+  },
+
+  head() {
     return {
-      cards: [
-        {
-          src: require('../assets/img/img_uthyrning1.jpg'),
-          title: 'Kontor',
-          text:
-            'Behöver du en kontorsplats? Vi hyr ut…. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
-          alt: 'Kontor'
-        },
-        {
-          src: require('../assets/img/img_uthyrning2.jpg'),
-          title: 'Garage',
-          text:
-            'Vi hyr även ut garage… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
-          alt: 'Garage'
-        },
-        {
-          src: require('../assets/img/img_uthyrning3.jpg'),
-          title: 'Vinterförvaring',
-          text:
-            'Ställplatser för husvagn, husbil och båt… sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
-          alt: 'Vinterförvaring'
-        },
-        {
-          src: require('../assets/img/img_uthyrning4.jpg'),
-          title: 'Verkstadslokaler',
-          text:
-            'Vi kan hjälpa dig med både större och mindre verkstadslokaler..Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
-          alt: 'Verkstadslokaler'
-        }
-      ]
+      title: 'Uthyrning'
     }
+  },
+
+  data() {
+    return {}
+  },
+  computed: {
+    uthyrnings() {
+      console.log(this.$store.state.uthyrnings.uthyrnings[0].fields.image.fields.file.url)
+      return this.$store.state.uthyrnings.uthyrnings
+    }
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('uthyrnings/getUthyrnings', params.slug)
   }
 }
 </script>

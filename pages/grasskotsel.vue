@@ -3,7 +3,41 @@
     <v-layout column justify-center align-center>
       <v-flex>
         <div>
-          <v-row>
+
+<v-row>
+            <v-col
+              v-for="(grasskotsel, i) in grasskotsels"
+              :key="i"
+              reverse-transition="fade-transition"
+              transition="fade-transition"
+              class="pa-10"
+              cols="6">
+
+              <v-card
+                elevation="0"
+                color="rgb(0, 0, 0, 0)"
+                tile
+                flat
+              >
+                <v-card-title
+                  class="text-center justify-center"
+                  color="rgb(0, 0, 0, 0)"
+                  ><p class="brown--text cardtitle">
+                    {{ grasskotsel.fields.title }}
+                  </p></v-card-title
+                >
+                <v-card-text>
+                  <v-responsive>
+                    <img :src="grasskotsel.fields.image.fields.file.url" :alt="grasskotsel.fields.alt" class="cards pa-0" />
+                  </v-responsive>
+                  <vue-markdown class="pt-3">{{ grasskotsel.fields.text }}</vue-markdown>
+                </v-card-text>
+              </v-card>
+
+            </v-col>
+          </v-row>
+
+         <!--  <v-row>
             <v-col
               v-for="(card, i) in cards"
               :key="i"
@@ -38,7 +72,7 @@
                 </v-card-text>
               </v-card>
             </v-col>
-          </v-row>
+          </v-row> -->
         </div>
       </v-flex>
     </v-layout>
@@ -46,20 +80,32 @@
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 export default {
-  data() {
+components: {
+    VueMarkdown
+  },
+
+  head() {
     return {
-      cards: [
-        {
-          src: require('../assets/img/img_jordbruk1.jpg'),
-          title: 'Klipper trimmar & Rensar',
-          text:
-            'Vill du ha hjälp med att underhålla föreningens trädgård?… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          alt: 'Klipper trimmar & Rensar'
-        }
-      ]
+      title: 'Grönyteskötsel'
     }
+  },
+
+  data() {
+    return {}
+  },
+  computed: {
+    grasskotsels() {
+      /* console.log(this.$store.state.grasskotsels.grasskotsels[0].fields.image.fields.file.url) */
+      return this.$store.state.grasskotsels.grasskotsels
+    }
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('grasskotsels/getGrasskotsels', params.slug)
   }
+
 }
 </script>
 

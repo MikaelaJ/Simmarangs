@@ -40,7 +40,7 @@ export default {
 
   head() {
     return {
-      title: 'Startsida'
+      title: 'Om oss'
     }
   },
 

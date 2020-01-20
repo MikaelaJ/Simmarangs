@@ -5,37 +5,34 @@
         <div>
           <v-row>
             <v-col
-              v-for="(card, i) in cards"
+              v-for="(jordbruk, i) in jordbruks"
               :key="i"
-              :src="card.src"
               reverse-transition="fade-transition"
               transition="fade-transition"
-              class="text-center pa-10"
-              cols="6"
-            >
+              class="pa-10"
+              cols="6">
+
               <v-card
                 elevation="0"
                 color="rgb(0, 0, 0, 0)"
                 tile
                 flat
-                class="text-center"
               >
                 <v-card-title
                   class="text-center justify-center"
                   color="rgb(0, 0, 0, 0)"
                   ><p class="brown--text cardtitle">
-                    {{ card.title }}
+                    {{ jordbruk.fields.title }}
                   </p></v-card-title
                 >
-                <v-card-text class="">
+                <v-card-text>
                   <v-responsive>
-                    <img :src="card.src" :alt="card.alt" class="cards pa-0" />
+                    <img :src="jordbruk.fields.image.fields.file.url" :alt="jordbruk.fields.alt" class="cards pa-0" />
                   </v-responsive>
-                  <p>
-                    {{ card.text }}
-                  </p>
+                  <vue-markdown class="pt-3">{{ jordbruk.fields.text }}</vue-markdown>
                 </v-card-text>
               </v-card>
+
             </v-col>
           </v-row>
         </div>
@@ -45,40 +42,30 @@
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 export default {
-  data() {
+components: {
+    VueMarkdown
+  },
+
+  head() {
     return {
-      cards: [
-        {
-          src: require('../assets/img/img_jordbruk1.jpg'),
-          title: 'Dikor – Kravmärkt',
-          text:
-            'Vi säljer KRAV-märkt kött från våra dikor… Snöplogning och Sandning… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
-          alt: 'Dikor – Kravmärkt'
-        },
-        {
-          src: require('../assets/img/img_jordbruk2.jpg'),
-          title: 'Pressa foder',
-          text:
-            'Vi kan hjälpa till att pressa både ensilage, halm och hö… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-          alt: 'Pressa foder'
-        },
-        {
-          src: require('../assets/img/img_jordbruk3.jpg'),
-          title: 'Fastgödselspridare',
-          text:
-            'Vi erbjuder också… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
-          alt: 'Fastgödselspridare'
-        },
-        {
-          src: require('../assets/img/img_jordbruk4.jpg'),
-          title: 'Slå gräs',
-          text:
-            'Vi har all utrustning till att slå olika sorters gräs….Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
-          alt: 'Slå gräs'
-        }
-      ]
+      title: 'Startsida'
     }
+  },
+
+  data() {
+    return {}
+  },
+  computed: {
+    jordbruks() {
+      console.log(this.$store.state.jordbruks.jordbruks[0].fields.image.fields.file.url)
+      return this.$store.state.jordbruks.jordbruks
+    }
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('jordbruks/getJordbruks', params.slug)
   }
 }
 </script>
