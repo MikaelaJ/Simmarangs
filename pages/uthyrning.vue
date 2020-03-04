@@ -6,8 +6,8 @@
 
           <v-row>
             <v-col
-              v-for="(uthyrning, i) in uthyrnings"
-              :key="i"
+              v-for="(lease, i) in leasing"
+            :key="`${i}-${lease.fields.text}`"
               reverse-transition="fade-transition"
               transition="fade-transition"
               class="pa-10"
@@ -22,15 +22,15 @@
                 <v-card-title
                   class="text-center justify-center"
                   color="rgb(0, 0, 0, 0)"
-                  ><p class="brown--text cardtitle">
-                    {{ uthyrning.fields.title }}
+                  ><p class="teal--text cardtitle">
+                    {{ lease.fields.title }}
                   </p></v-card-title
                 >
                 <v-card-text>
                   <v-responsive>
-                    <img :src="uthyrning.fields.image.fields.file.url" :alt="uthyrning.fields.alt" class="cards pa-0" />
+                    <img :src="lease.fields.image.fields.file.url" :alt="lease.fields.alt" class="cards pa-0" />
                   </v-responsive>
-                  <vue-markdown class="pt-3">{{ uthyrning.fields.text }}</vue-markdown>
+                  <vue-markdown class="pt-3">{{ lease.fields.text }}</vue-markdown>
                 </v-card-text>
               </v-card>
 
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import VueMarkdown from 'vue-markdown'
 
 export default {
@@ -60,13 +61,15 @@ components: {
     return {}
   },
   computed: {
-    uthyrnings() {
-      console.log(this.$store.state.uthyrnings.uthyrnings[0].fields.image.fields.file.url)
-      return this.$store.state.uthyrnings.uthyrnings
-    }
+    ...mapState('getservices', ['leasing'])
   },
-  async fetch({ store, params }) {
-    await store.dispatch('uthyrnings/getUthyrnings', params.slug)
+
+  beforeMount() {
+    this.getLeasing()
+  },
+
+  methods: {
+    ...mapActions('getservices', ['getLeasing'])
   }
 }
 </script>

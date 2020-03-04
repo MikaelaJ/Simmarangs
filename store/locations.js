@@ -15,7 +15,7 @@ export const mutations = {
 export const actions = {
   async getLocations({ commit }, data) {
     const response = await client.getEntries({
-      content_type: 'map'
+      content_type: 'kontaktAddress'
     })
     if (response.items.length > 0) {
       commit('setLocations', response.items)

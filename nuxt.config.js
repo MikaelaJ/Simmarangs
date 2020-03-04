@@ -6,6 +6,10 @@ export default {
     fallback: true
   }, */
 
+  router: {
+    linkActiveClass: 'active-link'
+  },
+
   mode: 'spa',
   /*
    ** Headers of the page

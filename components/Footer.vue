@@ -9,7 +9,7 @@
         text
         router
         rounded
-        class="my-2"
+        class="my-6"
         >{{ link.text }}</v-btn
       >
       <v-col class="py-6 text-center" cols="12">
@@ -23,7 +23,7 @@
           ><v-icon class="white--text" right>{{ icon.icon }}</v-icon></nuxt-link
         >
         <v-row justify="center" class="blue--text pt-10">
-          {{ new Date().getFullYear() }} —
+          {{ date }} —
           <strong>Simmarängs AB</strong>
         </v-row>
       </v-col>
@@ -33,11 +33,13 @@
 
 <script>
 export default {
+
   data: () => ({
+    date: new Date().getFullYear(),
     links: [
       { link: 'Entrepenad', text: 'Entrepenad', route: '/entrepenad' },
       { link: 'Jordbruk', text: 'Jordbruk', route: '/jordbruk' },
-      { link: 'Grässkötsel', text: 'Grässkötsel', route: '/grässkötsel' },
+      { link: 'Grässkötsel', text: 'Grönyteskötsel', route: '/grasskotsel' },
       { link: 'Uthyrning', text: 'Uthyrning', route: '/uthyrning' },
       { link: 'Omoss', text: 'Om oss', route: '/omoss' },
       { link: 'Kontakt', text: 'Kontakt', route: '/kontakt' }

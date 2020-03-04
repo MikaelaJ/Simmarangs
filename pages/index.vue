@@ -12,17 +12,17 @@
       <v-row>
         <v-col md="12">
           <v-card
-            v-for="(post, i) in posts"
-            :key="i"
+            v-for="(newpost, i) in news"
+            :key="`${i}-${newpost.fields.text}`"
             elevation="1"
             class="my-10 px-3"
           >
             <v-card-title class="blue--text">
-              {{ post.fields.title }}
+              {{ newpost.fields.title }}
               <v-card-text class="pl-0">
-                <vue-markdown class="black--text">{{ post.fields.text }}</vue-markdown>
+                <vue-markdown class="black--text">{{ newpost.fields.text}}</vue-markdown>
                 <br />
-                <p class="text-right">{{ post.sys.createdAt }}</p>
+                <p class="text-right">{{ newpost.sys.createdAt.substring(0, 10) }}</p>
               </v-card-text>
             </v-card-title>
           </v-card>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import VueMarkdown from 'vue-markdown'
 
 export default {
@@ -47,15 +48,20 @@ export default {
   },
 
   data() {
-    return {}
-  },
-  computed: {
-    posts() {
-      return this.$store.state.posts.posts
+    return {
     }
   },
-  async fetch({ store, params }) {
-    await store.dispatch('posts/getPosts', params.slug)
+
+  computed: {
+    ...mapState('getposts', ['news'])
+  },
+
+  beforeMount() {
+    this.getNews()
+  },
+
+  methods: {
+    ...mapActions('getposts', ['getNews'])
   }
 }
 </script>

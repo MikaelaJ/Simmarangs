@@ -9,17 +9,17 @@
       <v-row>
         <v-col md="12">
           <v-card
-            v-for="(history, i) in historys"
-            :key="i"
+            v-for="(newpost, i) in about"
+            :key="`${i}-${newpost.fields.text}`"
             elevation="1"
             class="my-10 px-3"
           >
             <v-card-title class="blue--text">
-              {{ history.fields.title }}
+              {{ newpost.fields.title }}
               <v-card-text class="pl-0">
-                <vue-markdown class="black--text">{{ history.fields.text }}</vue-markdown>
+                <vue-markdown class="black--text">{{ newpost.fields.text }}</vue-markdown>
                 <br />
-                <p class="text-right">{{ history.sys.createdAt }}</p>
+                <p class="text-right">{{ newpost.sys.createdAt }}</p>
               </v-card-text>
             </v-card-title>
           </v-card>
@@ -30,11 +30,11 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import VueMarkdown from 'vue-markdown'
 
 export default {
   components: {
-    // Swish,
     VueMarkdown
   },
 
@@ -47,13 +47,17 @@ export default {
   data() {
     return {}
   },
+
   computed: {
-    historys() {
-      return this.$store.state.historys.historys
-    }
+    ...mapState('getposts', ['about'])
   },
-  async fetch({ store, params }) {
-    await store.dispatch('historys/getHistorys', params.slug)
+
+  beforeMount() {
+    this.getAbout()
+  },
+
+  methods: {
+    ...mapActions('getposts', ['getAbout'])
   }
 }
 </script>

@@ -15,7 +15,7 @@ export const mutations = {
 export const actions = {
   async getKontakts({ commit }, data) {
     const response = await client.getEntries({
-      content_type: 'kontakt'
+      content_type: 'kontakPersonal'
     })
     if (response.items.length > 0) {
       commit('setKontakts', response.items)

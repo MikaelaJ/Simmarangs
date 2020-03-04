@@ -5,9 +5,8 @@
         <div>
           <v-row>
             <v-col
-              v-for="(card, i) in cards"
-              :key="i"
-              :src="card.src"
+              v-for="(post, i) in entreprenad"
+              :key="`${i}-${post.fields.text}`"
               reverse-transition="fade-transition"
               transition="fade-transition"
               class="text-center pa-10"
@@ -24,15 +23,15 @@
                   class="text-center justify-center"
                   color="rgb(0, 0, 0, 0)"
                   ><p class="teal--text cardtitle">
-                    {{ card.title }}
+                    {{ post.fields.title }}
                   </p></v-card-title
                 >
                 <v-card-text>
                   <v-responsive>
-                    <img :src="card.src" :alt="card.alt" class="cards pa-0" />
+                    <img :src="post.fields.image.fields.file.url" :alt="post.fields.alt" class="cards pa-0" />
                   </v-responsive>
                   <p>
-                    {{ card.text }}
+                    {{ post.fields.text }}
                   </p>
                 </v-card-text>
               </v-card>
@@ -45,40 +44,24 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+import VueMarkdown from 'vue-markdown'
+
 export default {
   data() {
-    return {
-      cards: [
-        {
-          src: require('../assets/img/img_entrepenad1.png'),
-          title: 'Vinterunderhåll',
-          text:
-            'Kontakta oss om du behöver hjälp med vinterunderhållet. Snöplogning och Sandning… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          alt: 'Vinterunderhåll'
-        },
-        {
-          src: require('../assets/img/img_entrepenad2.png'),
-          title: 'Markarbeten',
-          text:
-            'Vi utför alla möjliga sorters markarbeten så som grävning och köra dumper… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          alt: 'Markarbeten'
-        },
-        {
-          src: require('../assets/img/img_entrepenad3.png'),
-          title: 'Tomtplanering',
-          text:
-            'Behöver du hjälp med markanläggning och planera tomter… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui sapien eget mi proin sed libero enim sed faucibus.',
-          alt: 'Tomtplanering'
-        },
-        {
-          src: require('../assets/img/img_entrepenad4.png'),
-          title: 'Jordförsäljning',
-          text:
-            'Planteringstid? Vi säljer prima sorterad jord av alla möjliga varianter… Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          alt: 'Jordförsäljning'
-        }
-      ]
-    }
+    return {}
+  },
+
+  computed: {
+    ...mapState('getservices', ['entreprenad'])
+  },
+
+  beforeMount() {
+    this.getEntreprenad()
+  },
+
+  methods: {
+    ...mapActions('getservices', ['getEntreprenad'])
   }
 }
 </script>
