@@ -6,12 +6,12 @@
 
           <v-row>
             <v-col
-              v-for="(lease, i) in leasing"
+              v-for="(lease, i) in serviceLeasing"
             :key="`${i}-${lease.fields.text}`"
               reverse-transition="fade-transition"
               transition="fade-transition"
               class="pa-10"
-              cols="6">
+              cols="12" md="6">
 
               <v-card
                 elevation="0"
@@ -53,7 +53,7 @@ components: {
 
   head() {
     return {
-      title: 'Uthyrning'
+      title: 'Uthyrning Garage och Kontor'
     }
   },
 
@@ -61,15 +61,21 @@ components: {
     return {}
   },
   computed: {
-    ...mapState('getservices', ['leasing'])
+    ...mapState('getpage', ['serviceLeasing'])
   },
-
-  beforeMount() {
-    this.getLeasing()
+  async created() {
+    await this.getPage({ content_type: 'serviceLeasing' })
   },
-
   methods: {
-    ...mapActions('getservices', ['getLeasing'])
+    ...mapActions('getpage', ['getPage']),
+
+    getAssets(bild) {
+      let src
+      if (bild) {
+        src = bild
+      }
+      return src
+    }
   }
 }
 </script>

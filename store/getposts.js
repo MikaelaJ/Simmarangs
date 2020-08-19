@@ -19,7 +19,8 @@ export const mutations = {
 export const actions = {
   async getNews({ commit }, data) {
     const response = await client.getEntries({
-      content_type: 'startsidaNyheter'
+      content_type: 'startsidaNyheter',
+      order: '-sys.createdAt'
     })
     if (response.items.length > 0) {
       commit('setNews', response.items)
@@ -27,7 +28,8 @@ export const actions = {
   },
   async getAbout({ commit }, data) {
     const response = await client.getEntries({
-      content_type: 'about'
+      content_type: 'about', 
+      order: '-sys.createdAt'
     })
     if (response.items.length > 0) {
       commit('setAbout', response.items)

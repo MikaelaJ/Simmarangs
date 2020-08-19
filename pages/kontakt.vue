@@ -16,7 +16,7 @@
               reverse-transition="fade-transition"
               transition="fade-transition"
               class="text-center pa-10"
-              xs="12"
+              cols="12"
               sm="6"
               md="4"
             >
@@ -24,7 +24,11 @@
                 <v-img :src="kontakt.fields.profile.fields.file.url" alt="bild" height="200px"></v-img>
               </v-avatar>
               <h3 class="green--text">{{ kontakt.fields.title }}</h3>
-              <p>{{ kontakt.fields.text }}</p>
+              <vue-markdown>{{ kontakt.fields.text }}</vue-markdown>
+              <span class="green--text"> <strong>{{ kontakt.fields.tel }}</strong></span> <br>
+              <a :href="`mailto:` + kontakt.fields.mail"><strong>{{
+                    kontakt.fields.mail
+                  }}</strong></a>
             </v-col>
           </v-row>
           <div v-for="(location, i) in locations" :key="`${i}-${location.fields.name}`">
@@ -35,7 +39,7 @@
                   <p class="text-center">{{ location.fields.address }}</p>
                 </v-col>
               </v-row>
-              <v-col xs="12" sm="12" md="12" lg="12" xl="12" hover>
+              <v-col cols="12" sm="12" md="12" lg="12" xl="12" hover>
                 <v-responsive>
                   <iframe
                     v-if="location.fields.location"
@@ -58,10 +62,15 @@
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 export default {
+  components: {
+    VueMarkdown
+  },
   head() {
     return {
-      title: 'Kontakta oss'
+      title: 'Kontakt'
     }
   },
   computed: {
@@ -111,6 +120,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 @import '../assets/style.scss';
+a {
+  text-decoration: none !important;
+  color: #88BF88 !important;
+
+  &:visited {
+    color: inherit;
+  }
+}
 </style>

@@ -15,6 +15,20 @@ export default {
     Footer,
     Header
   },
+
+head() {
+    return {
+      titleTemplate: '%s - Simmarängs',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Åshammar, dikor och entrepenad'
+        }
+      ]
+    }
+  },
+
   data() {
     return {}
   }

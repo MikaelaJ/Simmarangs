@@ -7,22 +7,13 @@
       </v-row>
       <v-divider class="blue"></v-divider>
       <v-row>
-        <v-col md="12">
-          <v-card
-            v-for="(newpost, i) in about"
-            :key="`${i}-${newpost.fields.text}`"
-            elevation="1"
-            class="my-10 px-3"
-          >
-            <v-card-title class="blue--text">
-              {{ newpost.fields.title }}
-              <v-card-text class="pl-0">
-                <vue-markdown class="black--text">{{ newpost.fields.text }}</vue-markdown>
-                <br />
-                <p class="text-right">{{ newpost.sys.createdAt }}</p>
-              </v-card-text>
-            </v-card-title>
-          </v-card>
+        <v-col cols="12" sm="12" md="12" v-for="(newpost, i) in about" :key="`${i}-${newpost.fields.text}`">
+          <div class="box">
+            <h3 class="blue--text pb-3">{{ newpost.fields.title }}</h3>
+            <p>
+              <vue-markdown class="black--text">{{ newpost.fields.text }}</vue-markdown>
+            </p>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -62,6 +53,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 @import '../assets/style.scss';
+
+@media only screen and (max-width: 600px) {
+
+  p {
+    font-size: 0.85em;
+  }
+}
+
 </style>

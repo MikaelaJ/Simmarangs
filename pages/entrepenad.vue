@@ -5,19 +5,19 @@
         <div>
           <v-row>
             <v-col
-              v-for="(post, i) in entreprenad"
+              v-for="(post, i) in serviceEntreprenad"
               :key="`${i}-${post.fields.text}`"
               reverse-transition="fade-transition"
               transition="fade-transition"
-              class="text-center pa-10"
-              cols="6"
+              class="pa-10"
+              cols="12" md="6"
             >
               <v-card
                 elevation="0"
                 color="rgb(0, 0, 0, 0)"
                 tile
                 flat
-                class="text-center"
+                
               >
                 <v-card-title
                   class="text-center justify-center"
@@ -30,9 +30,7 @@
                   <v-responsive>
                     <img :src="post.fields.image.fields.file.url" :alt="post.fields.alt" class="cards pa-0" />
                   </v-responsive>
-                  <p>
-                    {{ post.fields.text }}
-                  </p>
+                  <vue-markdown>{{ post.fields.text }}</vue-markdown>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -48,20 +46,27 @@ import { mapActions, mapState } from 'vuex'
 import VueMarkdown from 'vue-markdown'
 
 export default {
+  components: {
+    VueMarkdown
+  },
+
+  head() {
+    return {
+      title: 'Jordbruk och Vinterunderhåll'
+    }
+  },
   data() {
     return {}
   },
 
   computed: {
-    ...mapState('getservices', ['entreprenad'])
+    ...mapState('getpage', ['serviceEntreprenad'])
   },
-
-  beforeMount() {
-    this.getEntreprenad()
+  async created() {
+    await this.getPage({ content_type: 'serviceEntreprenad' })
   },
-
   methods: {
-    ...mapActions('getservices', ['getEntreprenad'])
+    ...mapActions('getpage', ['getPage'])
   }
 }
 </script>

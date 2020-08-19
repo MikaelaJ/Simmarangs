@@ -6,8 +6,8 @@ $brownish: '#3B2E24'; */
 
 a {
   text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
+  /* font-weight: 600;
+  text-transform: uppercase; */
 }
 
 header {
@@ -29,11 +29,28 @@ header {
   padding: 0;
 }
 .index-img {
-  /* object-fit: fill;
-  object-position: 40% 6; */
-  width: 80%;
-  height: 430px;
- /*  overflow: hidden; */
+  /* object-fit: cover;
+  object-position: 80% 9; */
+  width: 100vw;
+  height: 55vh;
+  /* overflow: hidden; */
   /* clip-path: inset(0% 10% 0% 10%); */
-  padding: 0;
+  /* padding: 0; */
 }
+
+.box {
+  border-radius: 3px;
+  margin: 2% 0% 0% 0%;
+  padding: 2% 3% 2% 3%;
+  background-color: white;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 900px) {
+
+  .index-img {
+    width: 100vw;
+    height: 35vh;
+  }
+}
+

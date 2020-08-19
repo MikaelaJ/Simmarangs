@@ -13,15 +13,14 @@
         >{{ link.text }}</v-btn
       >
       <v-col class="py-6 text-center" cols="12">
-        <nuxt-link
+        <v-btn
           v-for="icon in icons"
           :key="icon.icon"
-          :to="icon.route"
           text
-          router
-          class="my-2 pa-3"
-          ><v-icon class="white--text" right>{{ icon.icon }}</v-icon></nuxt-link
-        >
+          large
+          class="my-2"
+          ><a :href="icon.route" target="_blank"><v-icon color="white">{{ icon.icon }}</v-icon></a>
+          </v-btn>
         <v-row justify="center" class="blue--text pt-10">
           {{ date }} —
           <strong>Simmarängs AB</strong>
@@ -45,9 +44,9 @@ export default {
       { link: 'Kontakt', text: 'Kontakt', route: '/kontakt' }
     ],
     icons: [
-      { icon: 'mdi-facebook-box', text: 'Facebook icon', route: '/about' },
-      { icon: 'mdi-instagram', text: 'Instagram icon', route: '/about' },
-      { icon: 'mdi-linkedin-box', text: 'LinkedIn icon', route: '/about' }
+      { icon: 'mdi-facebook', text: 'Facebook icon', route: 'https://www.facebook.com/Simmar%C3%A4ngs-AB-1740988246137637/' },
+      { icon: 'mdi-instagram', text: 'Instagram icon', route: 'https://www.instagram.com/' },
+      { icon: 'mdi-linkedin', text: 'LinkedIn icon', route: 'https://www.linkedin.com' }
     ]
   })
 }

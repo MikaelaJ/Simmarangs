@@ -5,12 +5,12 @@
         <div>
           <v-row>
             <v-col
-              v-for="(posts, i) in green"
+              v-for="(posts, i) in serviceGreen"
               :key="`${i}-${posts.fields.text}`"
               reverse-transition="fade-transition"
               transition="fade-transition"
               class="pa-10"
-              cols="6"
+              cols="12" md="6"
             >
               <v-card elevation="0" color="rgb(0, 0, 0, 0)" tile flat>
                 <v-card-title class="text-center justify-center" color="rgb(0, 0, 0, 0)">
@@ -53,8 +53,18 @@ export default {
   data() {
     return {}
   },
-
+  /* ______________ */
   computed: {
+    ...mapState('getpage', ['serviceGreen'])
+  },
+  async created() {
+    await this.getPage({ content_type: 'serviceGreen' })
+  },
+  methods: {
+    ...mapActions('getpage', ['getPage']),
+  }
+
+ /*  computed: {
     ...mapState('getservices', ['green'])
   },
 
@@ -64,7 +74,7 @@ export default {
 
   methods: {
     ...mapActions('getservices', ['getGreen'])
-  }
+  } */
 }
 </script>
 
